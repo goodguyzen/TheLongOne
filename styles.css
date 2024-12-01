@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  max-width: 50%; /* Ensures the logo doesn't exceed the container's width */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center content vertically */
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  height: 90vh; /* Ensure the container takes full viewport height */
+
+}
+
+.left-grid, .right-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.left-grid, .right-grid {
+  grid-template-columns: repeat(2, 1fr);
+  width: 40%;
+}
+
+.right-grid {
+  width: 30%;
+}
+
+.right-grid .card.course-card:nth-child(3) {
+  height: 120px;
+}
+
+.right-grid .card.course-card:nth-child(1), .right-grid .card.course-card:nth-child(2) {
+  height: 280px;
+}
+
+.card {
+  position: relative; /* Ensure the pseudo-element is positioned correctly */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  overflow: hidden; /* Ensure the pseudo-element doesn't overflow */
+}
+
+.card::before {
+  z-index: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 10px; /* Match the card's border-radius */
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-content {
+  position: relative; /* Ensure it is positioned relative to the card */
+  z-index: 1; /* Set a higher z-index than the ::before pseudo-element */
+  font-size: 12px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card-content .appir {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover .card-content .appir {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.explore-btn {
+  background-color: #c31d12;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.explore-btn:hover {
+  background-color: #96150c;
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* bottom nav */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  padding: 10px 0;
+}
+
+.nav-btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background: #fff;
+  border: transparent;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #d7b4b4;
+  border-color: none;
+}
+
+.nav-btn.active {
+  background-color: #c31d12;
+  color: #fff;
+  border-color: transparent;
+  cursor: default;
+  box-shadow: none;
+}
+
+
+
+/* responsiv */
+
+@media (max-width: 1024px) {
+  .left-grid, .right-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .left-grid, .right-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 60%;
+  }
+}

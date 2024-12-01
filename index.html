@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="searchbar.css">
+</head>
+<body>
+  
+      <div class="container">
+        <!-- Main Buildings -->
+        <div class="left-grid">
+          <div class="card main-card" style="background-image: url(images/school-proj.jpg);">
+            <div class="card-content">
+                <h1>Rodriguez</h1>
+
+              <div class="appir">
+                <a href="Buildings/Rodriguez/rodriguezmain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card main-card" style="background-image: url(images/school-proj.jpg);">
+            <div class="card-content">
+              <h1>Arca</h1>
+
+              <div class="appir">
+                <a href="Buildings/Arca/arcamain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card main-card" style="background-image: url(images/school-proj.jpg);">
+            <div class="card-content">
+              <h1>Samonte</h1>
+
+              <div class="appir">
+                <a href="Buildings/Samonte/samontemain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card main-card" style="background-image: url(images/school-proj.jpg);">
+            <div class="card-content">
+              <h1>Mascardo</h1>
+              
+              <div class="appir">
+                  <a href="Buildings/Mascardo/mascardomain.html">
+                    <button class="explore-btn">EXPLORE!</button>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Courses Buildings -->
+        <div class="right-grid">
+
+          <div class="card course-card" style="background-image: url(images/css.jpg);">
+            <div class="card-content">
+              <h1>Soft Trade</h1>
+              
+              <div class="appir">
+                <a href="Buildings/Soft Trade/softrademain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card course-card" style="background-image: url(images/css.jpg);">
+            <div class="card-content">
+              <h1>Hard Trade</h1>
+              
+              <div class="appir">
+                <a href="Buildings/Hard Trade/hardtrademain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card course-card" style="background-image: url(images/css.jpg); grid-column: span 2;">
+            <div class="card-content">
+              <h1>CSS Building</h1>
+              
+              <div class="appir">
+                <a href="Buildings/CSS/cssmain.html">
+                  <button class="explore-btn">EXPLORE!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <div id="mapContent" class="content">
+    <div id="mapContainer">
+      <iframe id="mapIframe" src="mapindex.html" allow="fullscreen"></iframe>
+      <div id="searchContainer">
+          <input type="text" id="searchBar" placeholder="Search A Building">
+          <div id="suggestions"></div>
+          <button id="directionsButton" onclick="onDirectionsButtonClick()">Directions</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-btn" id="buildingsBtn">Buildings</button>
+    <button class="nav-btn" id="mapBtn">Map</button>
+  </div>
+
+  <script src="searchbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const buildingsBtn = document.getElementById('buildingsBtn');
+      const mapBtn = document.getElementById('mapBtn');
+      const buildingsContainer = document.querySelector('.container');
+      const mapContainer = document.getElementById('mapContent');
+  
+      function updateActiveButton() {
+        if (buildingsContainer.style.display !== 'none') {
+          buildingsBtn.classList.add('active');
+          mapBtn.classList.remove('active');
+        } else if (mapContainer.style.display !== 'none') {
+          mapBtn.classList.add('active');
+          buildingsBtn.classList.remove('active');
+        }
+      }
+  
+      // Example function to switch views
+      function showBuildings() {
+        buildingsContainer.style.display = 'flex';
+        mapContainer.style.display = 'none';
+        updateActiveButton();
+      }
+  
+      function showMap() {
+        mapContainer.style.display = 'flex';
+        buildingsContainer.style.display = 'none';
+        updateActiveButton();
+      }
+  
+      // Initial setup
+      showBuildings(); // or showMap() depending on the initial view
+  
+      // Add event listeners to buttons
+      buildingsBtn.addEventListener('click', showBuildings);
+      mapBtn.addEventListener('click', showMap);
+    });
+  </script>
+</body>
+</html>
